@@ -48,12 +48,10 @@ float dato_float=3.145;
 
 void delay_block(){
 	uint32_t i;
-	for(i=0;i<0x400000;i++);
+	for(i=0;i<0x200000;i++);
 }
 
 int main(void) {
-    int i = 0 ;  /* Force the counter to be placed into memory. */
-
 
     /* Init board hardware. */
     BOARD_InitBootPins();
@@ -63,21 +61,36 @@ int main(void) {
     /* Init FSL debug console. */
     BOARD_InitDebugConsole();
 #endif
-    printf("Hello World\r\n");
-    printf("Valor a imprimir: %d\r\n",test_global_var);
-    printf("Valor tipo float: %g\r\n",dato_float);
 
+    PRINTF("Hello World\r\n");
+    PRINTF("test_global_var: %d\r\n",test_global_var);
+    PRINTF("dato_float: %g\r\n",dato_float);
+    led_on_green();
 
-
+    /* Force the counter to be placed into memory. */
+    volatile static int i = 0 ;
+    unsigned char cont_LR = 0;
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
         i++ ;
-        printf("%u\r\n",i);
+        printf("i:%u\r\n",i);
         led_on_green();
         delay_block();
         led_off_green();
         delay_block();
+        if (i % 10 == 0){
+                	cont_LR++;
+                	if (cont_LR % 2 == 0){
+                		led_off_red();
+                	}
+                	else{
+                		led_on_red();
+                	}
+                }
 
+        /* 'Dummy' NOP to allow source level single stepping of
+            tight while() loop */
+        __asm volatile ("nop");
     }
     return 0 ;
 }
