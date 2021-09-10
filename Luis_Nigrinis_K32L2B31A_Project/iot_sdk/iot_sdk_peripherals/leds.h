@@ -39,8 +39,9 @@
 /*
  * @brief enciende led verde de tarjeta
  */
+
 void led_on_green();
-/*------------------------------------------------------- */
+
 /*
  * @brief apaga led verde de  tarjeta
  */
