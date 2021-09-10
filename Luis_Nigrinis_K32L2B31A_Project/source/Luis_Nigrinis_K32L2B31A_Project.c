@@ -18,6 +18,8 @@
 #include "clock_config.h"
 #include "K32L2B31A.h"
 #include "fsl_debug_console.h"
+
+#include "leds.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -40,6 +42,15 @@ float dato_float=3.145;
  * Private Source Code
  ******************************************************************************/
 
+/*
+ * @brief generar bloqueo a microcontrolador por tiempo fijo
+ */
+
+void delay_block(){
+	uint32_t i;
+	for(i=0;i<0x800000;i++);
+}
+
 int main(void) {
     int i = 0 ;  /* Force the counter to be placed into memory. */
 
@@ -57,9 +68,16 @@ int main(void) {
     printf("Valor tipo float: %g\r\n",dato_float);
 
 
+
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
         i++ ;
+        printf("%u\r\n",i);
+        led_on_green();
+        delay_block();
+        led_off_green();
+        delay_block();
+
     }
     return 0 ;
 }
