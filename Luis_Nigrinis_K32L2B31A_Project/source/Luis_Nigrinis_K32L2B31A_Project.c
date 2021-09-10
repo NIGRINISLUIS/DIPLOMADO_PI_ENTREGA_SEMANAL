@@ -1,5 +1,5 @@
 /*! @file : K32L2B31A_Project.c
- * @author  Ernesto Andres Rincon Cruz
+ * @author  Luis Carlos Niginis Alvarez
  * @version 0.0.000
  * @date    23/08/2021
  * @brief   Funcion principal main
@@ -48,7 +48,7 @@ float dato_float=3.145;
 
 void delay_block(){
 	uint32_t i;
-	for(i=0;i<0x400000;i++);
+	for(i=0;i<0x800000;i++);
 }
 
 int main(void) {
