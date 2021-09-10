@@ -37,16 +37,18 @@
  * Public Prototypes
  ******************************************************************************/
 /*
- * @brief enciende led verde de tarjeta
+ * @brief enciende led verde y rojo de tarjeta
  */
 
 void led_on_green();
+void led_on_red();
 
 /*
- * @brief apaga led verde de  tarjeta
+ * @brief apaga led verdey rojo  de  tarjeta
  */
 
 void led_off_green();
+void led_off_red();
 
 /** @} */ // end of LEDS
 /** @} */ // end of PERIPHERALS
