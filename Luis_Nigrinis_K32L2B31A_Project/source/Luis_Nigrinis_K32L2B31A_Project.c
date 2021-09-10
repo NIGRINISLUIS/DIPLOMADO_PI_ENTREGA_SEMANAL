@@ -48,7 +48,7 @@ float dato_float=3.145;
 
 void delay_block(){
 	uint32_t i;
-	for(i=0;i<0x800000;i++);
+	for(i=0;i<0x400000;i++);
 }
 
 int main(void) {
