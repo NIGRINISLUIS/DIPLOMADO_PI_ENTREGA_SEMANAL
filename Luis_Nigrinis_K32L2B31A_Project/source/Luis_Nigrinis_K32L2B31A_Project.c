@@ -20,6 +20,7 @@
 #include "fsl_debug_console.h"
 
 #include "leds.h"
+#include "sensor_de_luz.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -52,7 +53,7 @@ void delay_block(){
 }
 
 int main(void) {
-
+	uint32_t adc_sensor_de_luz;
     /* Init board hardware. */
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
@@ -73,7 +74,6 @@ int main(void) {
     /* Enter an infinite loop, just incrementing a counter. */
     while(1) {
         i++ ;
-        printf("i:%u\r\n",i);
         led_on_green();
         delay_block();
         led_off_green();
@@ -88,9 +88,9 @@ int main(void) {
                 	}
                 }
 
-        /* 'Dummy' NOP to allow source level single stepping of
-            tight while() loop */
-        __asm volatile ("nop");
+        adc_sensor_de_luz=sensordeluzobtenerdatoADC();
+        printf("ADC sensor de luz %u\r\n",adc_sensor_de_luz);
+
     }
     return 0 ;
 }
