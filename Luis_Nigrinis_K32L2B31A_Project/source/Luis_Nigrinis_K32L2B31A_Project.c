@@ -85,16 +85,14 @@ int main(void) {
 
     while(1) {
 
-
-
         if (lptmr0_irq_counter==1){
         	led_off_red();
-        	//led_on_green();
+        	led_on_green();
           	i++ ;
 
         }
         if (lptmr0_irq_counter==2){
-        	//led_on_red();
+        	led_on_red();
         	led_off_green();
         	lptmr0_irq_counter=0;
          	i++ ;
