@@ -21,6 +21,7 @@
 
 #include "leds.h"
 #include "sensor_de_luz.h"
+#include "irq_lptmr0.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -47,10 +48,12 @@ float dato_float=3.145;
  * @brief generar bloqueo a microcontrolador por tiempo fijo
  */
 
-void delay_block(){
-	uint32_t i;
-	for(i=0;i<0x100000;i++);
-}
+
+/*
+ * @brief interrupcion por LPTMRO cada un segundo
+ */
+
+
 
 int main(void) {
 	uint32_t adc_sensor_de_luz;
@@ -70,26 +73,33 @@ int main(void) {
 
     /* Force the counter to be placed into memory. */
     volatile static int i = 0 ;
-    unsigned char cont_LR = 0;
+    //unsigned char cont_LR = 0;
     /* Enter an infinite loop, just incrementing a counter. */
-    while(1) {
-        i++ ;
-        led_on_green();
-        delay_block();
-        led_off_green();
-        delay_block();
-        if (i % 10 == 0){
-                	cont_LR++;
-                	if (cont_LR % 2 == 0){
-                		led_off_red();
-                	}
-                	else{
-                		led_on_red();
-                	}
-                }
 
-        adc_sensor_de_luz=sensordeluzobtenerdatoADC();
-        printf("ADC sensor de luz %u\r\n",adc_sensor_de_luz);
+    /* Start counting */
+    LPTMR_StartTimer(LPTMR0);
+
+    while(1) {
+
+
+
+        if (lptmr0_irq_counter==1){
+             	led_off_red();
+             	led_on_green();
+             	i++ ;
+
+        }
+        if (lptmr0_irq_counter==2){
+                     	led_on_red();
+                     	led_off_green();
+                     	lptmr0_irq_counter=0;
+                     	i++ ;
+                     	adc_sensor_de_luz=sensordeluzobtenerdatoADC();
+                     	printf("ADC sensor de luz %u\r\n",adc_sensor_de_luz);
+
+        }
+
+
 
     }
     return 0 ;
