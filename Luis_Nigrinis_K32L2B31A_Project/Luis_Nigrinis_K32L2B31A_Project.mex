@@ -647,6 +647,16 @@
                   <data type="Version">2.2.0</data>
                </feature>
             </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lptmr" description="LPTMR Driver not found in the toolchain/IDE project. Project will not compile!" problem_level="2" source="Peripherals">
+               <feature name="enabled" evaluation="equal">
+                  <data type="Boolean">true</data>
+               </feature>
+            </dependency>
+            <dependency resourceType="SWComponent" resourceId="platform.drivers.lptmr" description="Unsupported version of the LPTMR Driver in the toolchain/IDE project. Required: ${required_value}, actual: ${actual_value}. Project might not compile correctly." problem_level="1" source="Peripherals">
+               <feature name="version" evaluation="equivalent">
+                  <data type="Version">2.1.1</data>
+               </feature>
+            </dependency>
          </dependencies>
          <generated_project_files>
             <file path="board/peripherals.c" update_enabled="true"/>
@@ -660,20 +670,27 @@
                <description></description>
                <options/>
                <dependencies>
-                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.0" description="Signal SE of the channel 0 of the peripheral ADC0 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
+                  <dependency resourceType="PeripheralUnifiedSignal" resourceId="ADC0.adc_se.3" description="Signal SE of the channel 3 of the peripheral ADC0 is not routed." problem_level="1" source="Peripherals:BOARD_InitPeripherals">
                      <feature name="routed" evaluation="">
                         <data type="Boolean">true</data>
+                     </feature>
+                  </dependency>
+                  <dependency resourceType="ClockOutput" resourceId="LPO_clock" description="LPO clock is inactive." problem_level="2" source="Peripherals:BOARD_InitPeripherals">
+                     <feature name="frequency" evaluation="greaterThan">
+                        <data type="Frequency" unit="Hz">0</data>
                      </feature>
                   </dependency>
                </dependencies>
                <instances>
                   <instance name="NVIC" uuid="d8198492-71cc-4db6-92d0-b5cbac6f7eb3" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="nvic">
-                        <array name="interrupt_table"/>
+                        <array name="interrupt_table">
+                           <struct name="0"/>
+                        </array>
                         <array name="interrupts"/>
                      </config_set>
                   </instance>
-                  <instance name="ADC0" uuid="314c977d-5311-4df3-9018-68935a1e3493" type="adc16" type_id="adc16_897558f9b7366ed198de18c33097d7d2" mode="ADC" peripheral="ADC0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                  <instance name="ADC0" uuid="34c52c88-5792-4f4a-9405-48a9d81baf27" type="adc16" type_id="adc16_897558f9b7366ed198de18c33097d7d2" mode="ADC" peripheral="ADC0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="fsl_adc16">
                         <struct name="adc16_config">
                            <setting name="referenceVoltageSource" value="kADC16_ReferenceVoltageSourceVref"/>
@@ -705,14 +722,37 @@
                         </struct>
                         <array name="adc16_channels_config">
                            <struct name="0">
-                              <setting name="channelName" value="sensor_de_luz"/>
+                              <setting name="channelName" value=""/>
                               <setting name="enableDifferentialConversion" value="false"/>
-                              <setting name="channelNumber" value="SE.0"/>
+                              <setting name="channelNumber" value="SE.3"/>
                               <setting name="enableInterruptOnConversionCompleted" value="false"/>
                               <setting name="channelGroup" value="0"/>
                               <setting name="initializeChannel" value="true"/>
                            </struct>
                         </array>
+                     </config_set>
+                  </instance>
+                  <instance name="LPTMR0" uuid="c5fbe1d5-174f-4c9e-81a6-ca547e1c8bac" type="lptmr" type_id="lptmr_48552e76e8733b28a9c768b6d8d4fefa" mode="LPTMR_GENERAL" peripheral="LPTMR0" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="fsl_lptmr">
+                        <struct name="lptmr_config">
+                           <setting name="timerMode" value="kLPTMR_TimerModeTimeCounter"/>
+                           <setting name="pinSelect" value="ALT.0"/>
+                           <setting name="pinPolarity" value="kLPTMR_PinPolarityActiveHigh"/>
+                           <setting name="enableFreeRunning" value="false"/>
+                           <setting name="bypassPrescaler" value="true"/>
+                           <setting name="prescalerClockSource" value="kLPTMR_PrescalerClock_1"/>
+                           <setting name="clockSource" value="BOARD_BootClockRUN"/>
+                           <setting name="value" value="kLPTMR_Prescale_Glitch_0"/>
+                           <setting name="timerPeriod" value="1s"/>
+                        </struct>
+                        <setting name="enableInterrupt" value="true"/>
+                        <struct name="interrupt">
+                           <setting name="IRQn" value="LPTMR0_IRQn"/>
+                           <setting name="enable_interrrupt" value="enabled"/>
+                           <setting name="enable_priority" value="false"/>
+                           <setting name="priority" value="0"/>
+                           <setting name="enable_custom_name" value="false"/>
+                        </struct>
                      </config_set>
                   </instance>
                </instances>
