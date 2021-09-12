@@ -1,15 +1,15 @@
-/*! @file : sensor_de_luz.c
+/*! @file : sensor_tem.c
  * @author  Luis Carlos Nigrinis Alvarez
  * @version 1.0.0
- * @date    10/09/2021
- * @brief   Driver para 
+ * @date    7/09/2021
+ * @brief   Driver para sensor de temperatura
  * @details
  *
 */
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include"sensor_de_luz.h"
+#include"sensor_temperatura.h"
 
 /*******************************************************************************
  * Definitions
@@ -19,8 +19,8 @@
 /*******************************************************************************
  * Private Prototypes
  ******************************************************************************/
-void sensorDeLuzIniciarCaptura(void);
- void sensorDeLuzEsperarResultado(void);
+void sensorDetemperaturaIniciarCaptura(void);
+void sensorDetemperaturaEsperarResultado(void);
 
 /*******************************************************************************
  * External vars
@@ -35,29 +35,44 @@ void sensorDeLuzIniciarCaptura(void);
 /*******************************************************************************
  * Private Source Code
  ******************************************************************************/
+void sensorDetemperaturaIniciarCaptura(){
 
- void sensorDeLuzIniciarCaptura(){
-
- 	 ADC16_SetChannelConfig(SENSOR_DE_LUZ_ADC16_BASE, SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP, &ADC0_channelsConfig[0]);
+ 	 ADC16_SetChannelConfig(SENSOR_DE_temperatura_ADC16_BASE, SENSOR_DE_temperatura_ADC16_CHANNEL_GROUP, &ADC0_channelsConfig[1]);
 
   }
-  void sensorDeLuzEsperarResultado(){
+  void sensorDetemperaturaEsperarResultado(){
  	 while (0U == (kADC16_ChannelConversionDoneFlag &
- 	                       ADC16_GetChannelStatusFlags(SENSOR_DE_LUZ_ADC16_BASE, SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP)))
+ 	                       ADC16_GetChannelStatusFlags(SENSOR_DE_temperatura_ADC16_BASE, SENSOR_DE_temperatura_ADC16_CHANNEL_GROUP)))
  	         {
  	         }
   }
+
 /*******************************************************************************
  * Public Source Code
  ******************************************************************************/
-
- float sensorDeLuzObtenerDatosADC(){
+ float SensorDetemperaturaObtenerDatosADC(){
 	 float resultadoADC;
+	 float temp25=0.716;
 
-	 sensorDeLuzIniciarCaptura();
-	         sensorDeLuzEsperarResultado();
-	 resultadoADC=ADC16_GetChannelConversionValue(SENSOR_DE_LUZ_ADC16_BASE, SENSOR_DE_LUZ_ADC16_CHANNEL_GROUP);
-	 resultadoADC= (2*(3.3-(3.3/resultadoADC)))*100;
-	 return(resultadoADC);
+
+		 sensorDetemperaturaIniciarCaptura();
+		         sensorDetemperaturaEsperarResultado();
+		 resultadoADC=ADC16_GetChannelConversionValue(SENSOR_DE_temperatura_ADC16_BASE, SENSOR_DE_temperatura_ADC16_CHANNEL_GROUP);
+
+
+
+				resultadoADC=resultadoADC*0.000732421;
+
+				 if(resultadoADC>temp25){
+					 resultadoADC=25-((resultadoADC-temp25)/1.646);
+				  }
+
+				 if(resultadoADC<0.7012){
+							 resultadoADC=25-((resultadoADC-temp25)/1.769);
+				 	}
+
+
+		 return(resultadoADC);
+
  }
 

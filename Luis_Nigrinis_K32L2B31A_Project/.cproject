@@ -139,6 +139,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_irq}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_temperatura}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.1645688671" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.881528340" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" useByScannerDiscovery="true"/>
@@ -204,6 +205,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_irq}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_temperatura}&quot;"/>
 								</option>
 								<option id="gnu.both.asm.option.warnings.nowarn.198312870" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
 								<option id="gnu.both.asm.option.version.569964867" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
@@ -489,6 +491,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_irq}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_temperatura}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.815982792" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.optimization.flags.725667910" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" useByScannerDiscovery="false" value="-fno-common" valueType="string"/>
@@ -552,6 +555,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_peripherals}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_irq}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/Luis_Nigrinis_K32L2B31A_Project/iot_sdk/iot_sdk_temperatura}&quot;"/>
 								</option>
 								<option id="gnu.both.asm.option.warnings.nowarn.1007916524" name="Suppress warnings (-W)" superClass="gnu.both.asm.option.warnings.nowarn"/>
 								<option id="gnu.both.asm.option.version.184715812" name="Announce version (-v)" superClass="gnu.both.asm.option.version"/>
