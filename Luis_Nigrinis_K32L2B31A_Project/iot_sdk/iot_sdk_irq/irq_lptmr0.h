@@ -11,14 +11,14 @@
 /*******************************************************************************
  * Includes
  ******************************************************************************/
-#include "peripherals.h"
+#include"peripherals.h"
 
 /*!
  * @addtogroup IRQ
  * @{
  */
 /*!
- * @addtogroup LPTMR0
+ * @addtogroup LPRMR0
  * @{
  */
 /*******************************************************************************
@@ -33,11 +33,14 @@
  * Public vars
  ******************************************************************************/
 extern volatile uint32_t lptmr0_irq_counter;
+extern volatile uint32_t led_rojo_irq_counter;
+extern volatile uint32_t boton1_presionado;
+extern volatile uint32_t boton2_presionado;
 /*******************************************************************************
  * Public Prototypes
  ******************************************************************************/
 
-/** @} */ // end of LPTMR0 group
-/** @} */ // end of IRQ group
+/** @} */ // end of X LPTMR0
+/** @} */ // end of X IRQ
 
 #endif /* IOT_SDK_IRQ_IRQ_LPTMR0_H_ */
