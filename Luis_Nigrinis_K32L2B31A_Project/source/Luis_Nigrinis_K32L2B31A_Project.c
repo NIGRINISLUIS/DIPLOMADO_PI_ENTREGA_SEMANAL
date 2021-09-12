@@ -1,5 +1,5 @@
 /*! @file : K32L2B31A_Project.c
- * @author  Luis Carlos Nigrinis Alvarez
+ * @author  Luis Carlos Niginis Alvarez
  * @version 0.0.000
  * @date    23/08/2021
  * @brief   Funcion principal main
