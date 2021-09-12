@@ -22,6 +22,7 @@
 #include "leds.h"
 #include "sensor_de_luz.h"
 #include "irq_lptmr0.h"
+#include "botones.h"
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
@@ -56,7 +57,10 @@ float dato_float=3.145;
 
 
 int main(void) {
+
 	uint32_t adc_sensor_de_luz;
+	bool boton1,boton2;
+
     /* Init board hardware. */
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
@@ -84,18 +88,24 @@ int main(void) {
 
 
         if (lptmr0_irq_counter==1){
-             	led_off_red();
-             	led_on_green();
-             	i++ ;
+        	led_off_red();
+        	//led_on_green();
+          	i++ ;
 
         }
         if (lptmr0_irq_counter==2){
-                     	led_on_red();
-                     	led_off_green();
-                     	lptmr0_irq_counter=0;
-                     	i++ ;
-                     	adc_sensor_de_luz=sensordeluzobtenerdatoADC();
-                     	printf("ADC sensor de luz %u\r\n",adc_sensor_de_luz);
+        	//led_on_red();
+        	led_off_green();
+        	lptmr0_irq_counter=0;
+         	i++ ;
+         	boton1=boton1leerestado();
+         	boton2=boton2leerestado();
+
+         	printf("Boton1 = %u\r\n",boton1);
+         	printf("Boton2 = %u\r\n",boton2);
+
+          	adc_sensor_de_luz=sensordeluzobtenerdatoADC();
+          	printf("ADC sensor de luz %u\r\n",adc_sensor_de_luz);
 
         }
 
